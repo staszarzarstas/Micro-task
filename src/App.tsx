@@ -1,26 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [a, setA] = React.useState(0);
+
+    const onClickHandler = () => {
+        setA(a + 1);
+    }
+
+    const resetMyCounter = () => {
+        setA(0);
+    }
+
+    return (
+        <div>
+            <div className="App">
+                <div className="screen_result">
+                    <h1 className={a === 5 ? 'red' : ''}>{a}</h1>
+                </div>
+                <div className="btn_container">
+                    <button onClick={onClickHandler} disabled={a === 5}>inc</button>
+                    <button onClick={resetMyCounter} disabled={a === 0}>reset</button>
+
+                </div>
+            </div>
+        </div>
+    );
 }
 
 export default App;
